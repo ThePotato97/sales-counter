@@ -4,6 +4,7 @@ import suidPlugin from "@suid/vite-plugin";
 // import devtools from 'solid-devtools/vite';
 
 export default defineConfig({
+  base: '/sales-counter/',
   plugins: [
     /* 
     Uncomment the following line to enable solid-devtools.
