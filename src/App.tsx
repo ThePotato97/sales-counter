@@ -90,48 +90,54 @@ function App() {
           />
         </Button>
         <Paper>
-          <Typography variant="h1">Top Items</Typography>
-          <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={6} md={4}>
-                <Box>Name</Box>
-              </Grid>
-              <Grid item xs={6} md={4}>
-                <Box>Amount</Box>
-              </Grid>
-              <Grid item xs={4} md={2}>
-                <Box>Price (Robux)</Box>
-              </Grid>
-              <Grid item xs={4} md={2}>
-                <Box>Total (Robux)</Box>
-              </Grid>
-              {current ? (
-                current().map((transaction) => {
-                  return (
-                    <>
-                      <Grid item xs={6} md={4}>
-                        <Box>{transaction.info["Asset Name"]}</Box>
-                      </Grid>
-                      <Grid item xs={6} md={4}>
-                        <Box>{transaction.amount}</Box>
-                      </Grid>
-                      <Grid item xs={4} md={2}>
-                        <Box>{transaction.info["Revenue"]}</Box>
-                      </Grid>
-                      <Grid item xs={4} md={2}>
-                        <Box>
-                          {transaction.amount *
-                            Number(transaction.info["Revenue"])}
-                        </Box>
-                      </Grid>
-                    </>
-                  );
-                })
-              ) : (
-                <Typography variant="h1">Loading</Typography>
-              )}
-            </Grid>
-          </Box>
+          {current().length > 0 ? (
+            <>
+              <Typography variant="h1">Top Items</Typography>
+              <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={6} md={4}>
+                    <Box>Name</Box>
+                  </Grid>
+                  <Grid item xs={6} md={4}>
+                    <Box>Amount</Box>
+                  </Grid>
+                  <Grid item xs={4} md={2}>
+                    <Box>Price (Robux)</Box>
+                  </Grid>
+                  <Grid item xs={4} md={2}>
+                    <Box>Total (Robux)</Box>
+                  </Grid>
+                  {current().length > 0 ? (
+                    current().map((transaction) => {
+                      return (
+                        <>
+                          <Grid item xs={6} md={4}>
+                            <Box>{transaction.info["Asset Name"]}</Box>
+                          </Grid>
+                          <Grid item xs={6} md={4}>
+                            <Box>{transaction.amount}</Box>
+                          </Grid>
+                          <Grid item xs={4} md={2}>
+                            <Box>{transaction.info["Revenue"]}</Box>
+                          </Grid>
+                          <Grid item xs={4} md={2}>
+                            <Box>
+                              {transaction.amount *
+                                Number(transaction.info["Revenue"])}
+                            </Box>
+                          </Grid>
+                        </>
+                      );
+                    })
+                  ) : (
+                    <Typography variant="h1">Select a file</Typography>
+                  )}
+                </Grid>
+              </Box>
+            </>
+          ) : (
+            <Typography variant="h1">Select a file</Typography>
+          )}
         </Paper>
       </header>
     </div>
